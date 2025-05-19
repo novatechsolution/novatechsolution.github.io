@@ -1,4 +1,5 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -8,7 +9,7 @@ require 'PHPMailer/src/SMTP.php';
 
 // var_dump($message);
 // die;
-if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) && isset($_POST['subject'])) {
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) && isset($_POST['subject'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
@@ -40,28 +41,28 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) &
     //Password to use for SMTP authentication
     $mail->Password = "password";
     //Set who the message is to be sent from
-    $mail->setFrom('bittekno.id@gmail.com', 'Bitekno');
+    $mail->setFrom('novatech.id@gmail.com', 'Novatech');
     //Set an alternative reply-to address
-    $mail->addReplyTo('bittekno.id@gmail.com', 'Bitekno');
+    $mail->addReplyTo('novatech.id@gmail.com', 'Novatech');
     //Set who the message is to be sent to
-    $mail->addAddress('juangsabit7@gmail.com', 'Juang');
+    $mail->addAddress('adjiieprayoga@gmail.com', 'Adjie');
     //Set the subject line
     $mail->Subject = $subject;
     //Replace the plain text body with one created manually
-    $body = "<html>"; 
-    $body .= "<body style=\"font-family:Verdana, Verdana, Geneva, sans-serif; font-size:12px; color:#666666;\">"; 
-    $body .= 'Nama = '.$name.'<br>';
-    $body .= 'Email = '.$email.'<br>';
-    $body .= 'Pesan = '.$message.'<br>';
-    $body .= "</body><br>"; 
+    $body = "<html>";
+    $body .= "<body style=\"font-family:Verdana, Verdana, Geneva, sans-serif; font-size:12px; color:#666666;\">";
+    $body .= 'Nama = ' . $name . '<br>';
+    $body .= 'Email = ' . $email . '<br>';
+    $body .= 'Pesan = ' . $message . '<br>';
+    $body .= "</body><br>";
     $body .= "</html><br>";
     $mail->IsHTML(true);
     $mail->Body = $body;
     //send the message, check for errors
     if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
+        echo "Mailer Error: " . $mail->ErrorInfo;
     } else {
-    echo "Message sent!";
+        echo "Message sent!";
     }
 } else {
     header('location:index.html');
